@@ -22,6 +22,22 @@ function createMainWindow() {
   }
 }
 
+// Crea seconda finestra
+function createAboutWindow() {
+  const aboutWindow = new BrowserWindow({
+    title: "About Image Resizer",
+    width: isDevMod ? 800 : 500,
+    height: 600,
+  });
+
+  aboutWindow.loadFile(path.join(__dirname, "./renderer/about.html"));
+
+  // Apre i devtools se siamo in modalità development e non i nproduzione
+  if (isDevMod) {
+    aboutWindow.webContents.openDevTools();
+  }
+}
+
 // Quando l'app è pronta ad avviarsi
 app
   .whenReady()
@@ -45,19 +61,40 @@ app
 
 // Menu template
 const menu = [
+  // Controllo se l'app è su windows o MacOS
+  // ...(isWin ? [{ label: app.name, submenu: "About" }] : []),
   {
     label: "File",
     submenu: [
       {
-        label: "Quit",
-        click: () => {
-          app.quit();
-        },
-        Accelerator: "CmdOrCtrl+W",
+        label: "Exit",
+        role: "Quit",
       },
     ],
   },
+  {
+    label: "About",
+    click: () => {
+      createAboutWindow();
+    },
+  },
 ];
+
+// const menu = [
+//   {
+//     label: "File",
+//     submenu: [
+//       {
+//         label: "Quit",
+//         click: () => {
+//           app.quit();
+//         },
+//         Accelerator: "CmdOrCtrl+W",
+//       },
+//     ],
+//   },
+// ];
+
 // Controllo per Mac, se tutte le finestre sono chiuse l'applicazione verrà spenta solo se non si è su Mac (win o linux)
 app.on("window-all-closed", () => {
   if (!isMac) {
