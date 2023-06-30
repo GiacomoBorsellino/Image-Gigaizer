@@ -1,0 +1,31 @@
+{
+  "name": "resizer",
+  "productName": "Image Resizer",
+  "version": "1.0.0",
+  "description": "little app make to resize images",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ./src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GiacomoBorsellino/resizer.git"
+  },
+  "keywords": [
+    "electron",
+    "javascript",
+    "resize",
+    "image"
+  ],
+  "author": "Giacomo Borsellino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GiacomoBorsellino/resizer/issues"
+  },
+  "homepage": "https://github.com/GiacomoBorsellino/resizer#readme",
+  "dependencies": {
+    "electron": "^14.2.9",
+    "resize-img": "^1.1.2",
+    "toastify-js": "^1.12.0"
+  }
+}
