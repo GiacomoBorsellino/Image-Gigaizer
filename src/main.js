@@ -1,5 +1,7 @@
-const path = require("path");
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+const os = require("os");
+const path = require("path");
+const fs = require("fs");
 
 const isMac = process.platform === "darwin";
 const isWin = process.platform === "win32";
@@ -88,9 +90,11 @@ const menu = [
 // Risposta a ipcRenderer
 ipcMain.on("image:resize", (e, options) => {
   console.log(options);
-  // options.dest = path.join(os.homedir(), "imageresizer");
-  // resizeImage(options);
+  options.dest = path.join(os.homedir(), "imageresizer");
+  resizeImage(options);
 });
+
+function resizeImage({ imgPath, width, height }) {}
 // Controllo per Mac, se tutte le finestre sono chiuse l'applicazione verrà spenta solo se non si è su Mac (win o linux)
 app.on("window-all-closed", () => {
   if (!isMac) {
