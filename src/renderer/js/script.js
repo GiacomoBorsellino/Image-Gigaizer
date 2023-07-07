@@ -5,6 +5,9 @@ const filename = document.querySelector("#filename");
 const heightInput = document.querySelector("#height");
 const widthInput = document.querySelector("#width");
 
+// console.log(versions.node());
+// console.log(os.homedir());
+
 // Carica un immagine
 function loadImage(e) {
   // Primo item di un Array
@@ -13,10 +16,48 @@ function loadImage(e) {
 
   // Check if file is an image
   if (!isFileImage(file)) {
+    console.log("Non è un immagine, cretino");
     alertError("Non è un immagine, cretino");
     return;
   }
-  console.log("ok");
+
+  // Ottieni dimensioni originali immagine
+  const image = new Image();
+  image.src = URL.createObjectURL(file);
+  image.onload = function () {
+    (widthInput.value = this.width), (heightInput.value = this.height);
+  };
+
+  //  Visualizza il form per inserire W e H
+  form.style.display = "block";
+  filename.innerText = file.name;
+
+  // Mettere il path delloutput
+  outputPath.innerText = path.join(os.homedir(), "imageresizer");
+}
+
+// Invio immagine in main process per il resize
+function resizeImage(e) {
+  e.preventDefault();
+  const imgPath = img.files[0].path;
+  const width = widthInput.value;
+  const height = heightInput.value;
+
+  if (!img.files[0]) {
+    alertError("Per favore carica un immagine");
+    return;
+  }
+
+  if (widthInput.value === "" || heightInput.value === "") {
+    alertError("Per favore inserisci delle dimensioni");
+    return;
+  }
+
+  ipcRenderer.send("image:resize", {
+    imgPath,
+    height,
+    width,
+  });
 }
 
 // Controlla se è un immagine
@@ -25,6 +66,35 @@ function isFileImage(file) {
   return file && acceptedImageTypes.includes(file["type"]);
 }
 
-img.addEventListener("change", loadImage);
+// Alert per controllare se c'è un successo
+function alertSuccess(message) {
+  Toastify.toast({
+    text: message,
+    duration: 5000,
+    close: false,
+    style: {
+      background: "green",
+      color: "white",
+      textAlign: "center",
+    },
+  });
+}
 
-// 36:00
+// Alert per controllare se c'è un errore
+function alertError(message) {
+  Toastify.toast({
+    text: message,
+    duration: 5000,
+    close: false,
+    style: {
+      background: "red",
+      color: "white",
+      textAlign: "center",
+    },
+  });
+}
+
+// File selezione
+img.addEventListener("change", loadImage);
+// Form invio file
+form.addEventListener("submit", resizeImage);

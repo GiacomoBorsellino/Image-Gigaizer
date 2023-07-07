@@ -1,5 +1,5 @@
 const path = require("path");
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 
 const isMac = process.platform === "darwin";
 const isWin = process.platform === "win32";
@@ -12,6 +12,11 @@ function createMainWindow() {
     title: "Image Resizer",
     width: isDevMod ? 800 : 500,
     height: 600,
+    webPreferences: {
+      contextIsolation: true,
+      nodeIntegration: true,
+      preload: path.join(__dirname, "./renderer/js/preload.js"),
+    },
   });
 
   mainWindow.loadFile(path.join(__dirname, "./renderer/index.html"));
@@ -80,6 +85,19 @@ const menu = [
   },
 ];
 
+// Risposta a ipcRenderer
+ipcMain.on("image:resize", (e, options) => {
+  console.log(options);
+  // options.dest = path.join(os.homedir(), "imageresizer");
+  // resizeImage(options);
+});
+// Controllo per Mac, se tutte le finestre sono chiuse l'applicazione verrà spenta solo se non si è su Mac (win o linux)
+app.on("window-all-closed", () => {
+  if (!isMac) {
+    app.quit();
+  }
+});
+
 // const menu = [
 //   {
 //     label: "File",
@@ -94,10 +112,3 @@ const menu = [
 //     ],
 //   },
 // ];
-
-// Controllo per Mac, se tutte le finestre sono chiuse l'applicazione verrà spenta solo se non si è su Mac (win o linux)
-app.on("window-all-closed", () => {
-  if (!isMac) {
-    app.quit();
-  }
-});
