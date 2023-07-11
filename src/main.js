@@ -1,13 +1,14 @@
-const { app, BrowserWindow, Menu, ipcMain, shell } = require("electron");
-const os = require("os");
-const path = require("path");
-const fs = require("fs");
-const resizeImg = require("resize-img");
+let { app, BrowserWindow, Menu, ipcMain, shell } = require("electron");
+let os = require("os");
+let path = require("path");
+let fs = require("fs");
+let resizeImg = require("resize-img");
 
-const isMac = process.platform === "darwin";
-const isWin = process.platform === "win32";
+let isMac = process.platform === "darwin";
+let isWin = process.platform === "win32";
 
-const isDevMod = process.env.NODE_ENV !== "development";
+// Controllo modalità applicazione: Sviluppo o Produzione
+let isDevMod = process.env.NODE_ENV !== "production";
 
 let mainWindow;
 
@@ -34,7 +35,7 @@ function createMainWindow() {
 
 // Crea seconda finestra
 function createAboutWindow() {
-  const aboutWindow = new BrowserWindow({
+  let aboutWindow = new BrowserWindow({
     title: "About Image Resizer",
     width: isDevMod ? 800 : 500,
     height: 600,
@@ -55,9 +56,14 @@ app
     createMainWindow();
 
     // Implementa il menu custom
-    const mainMenu = Menu.buildFromTemplate(menu);
-
+    let mainMenu = Menu.buildFromTemplate(menu);
     Menu.setApplicationMenu(mainMenu);
+
+    // Rimuovi MainWindow dalla memoria alla chiusura
+    mainWindow.on("closed", () => {
+      mainMenu = null;
+    });
+
     // Controllo se non ci sono finestre, la window principale verrà renderizzata
     app.on("activate", () => {
       if (BrowserWindow.getAllWindows.length === 0) {
@@ -70,7 +76,7 @@ app
   });
 
 // Menu template
-const menu = [
+let menu = [
   // Controllo se l'app è su windows o MacOS
   // ...(isWin ? [{ label: app.name, submenu: "About" }] : []),
   {
@@ -100,12 +106,12 @@ ipcMain.on("image:resize", (e, options) => {
 // Funzione per resizare l'immagine
 async function resizeImage({ imgPath, width, height, dest }) {
   try {
-    const newPath = await resizeImg(fs.readFileSync(imgPath), {
+    let newPath = await resizeImg(fs.readFileSync(imgPath), {
       width: +width,
       height: +height,
     });
 
-    const fileName = path.basename(imgPath);
+    let fileName = path.basename(imgPath);
 
     // Crea cartella di destinazione se non esiste
     if (!fs.existsSync(dest)) {
@@ -130,7 +136,7 @@ app.on("window-all-closed", () => {
   }
 });
 
-// const menu = [
+// let menu = [
 //   {
 //     label: "File",
 //     submenu: [
