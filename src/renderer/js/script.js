@@ -17,7 +17,7 @@ function loadImage(e) {
   // Check if file is an image
   if (!isFileImage(file)) {
     console.log("Non è un immagine, cretino");
-    alertError("Non è un immagine, cretino");
+    alertError("Non è un immagine, ritenta");
     return;
   }
 
@@ -78,7 +78,7 @@ function alertSuccess(message) {
     duration: 5000,
     close: false,
     style: {
-      background: "green",
+      background: "rgb(21 128 61)",
       color: "white",
       textAlign: "center",
     },
@@ -92,7 +92,7 @@ function alertError(message) {
     duration: 5000,
     close: false,
     style: {
-      background: "red",
+      background: "rgb(190 18 60)",
       color: "white",
       textAlign: "center",
     },
