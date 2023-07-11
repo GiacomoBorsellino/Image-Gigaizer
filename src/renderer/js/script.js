@@ -60,6 +60,11 @@ function resizeImage(e) {
   });
 }
 
+// Ascolto successo caricamento immagine
+ipcRenderer.on("image:done", () => {
+  alertSuccess("Immagine convertita correttamtne");
+});
+
 // Controlla se è un immagine
 function isFileImage(file) {
   const acceptedImageTypes = ["image/gif", "image/jpeg", "image/png"];

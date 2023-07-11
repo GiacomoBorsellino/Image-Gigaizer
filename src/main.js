@@ -1,16 +1,19 @@
-const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, shell } = require("electron");
 const os = require("os");
 const path = require("path");
 const fs = require("fs");
+const resizeImg = require("resize-img");
 
 const isMac = process.platform === "darwin";
 const isWin = process.platform === "win32";
 
 const isDevMod = process.env.NODE_ENV !== "development";
 
+let mainWindow;
+
 // Crea finestra principale
 function createMainWindow() {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     title: "Image Resizer",
     width: isDevMod ? 800 : 500,
     height: 600,
@@ -94,7 +97,32 @@ ipcMain.on("image:resize", (e, options) => {
   resizeImage(options);
 });
 
-function resizeImage({ imgPath, width, height }) {}
+// Funzione per resizare l'immagine
+async function resizeImage({ imgPath, width, height, dest }) {
+  try {
+    const newPath = await resizeImg(fs.readFileSync(imgPath), {
+      width: +width,
+      height: +height,
+    });
+
+    const fileName = path.basename(imgPath);
+
+    // Crea cartella di destinazione se non esiste
+    if (!fs.existsSync(dest)) {
+      fs.mkdirSync(dest);
+    }
+
+    // Scrivi il file nella destinazione
+    fs.writeFileSync(path.join(dest, fileName), newPath);
+
+    // Return messaggio di successo
+    mainWindow.webContents.send("image:done");
+
+    // Apri cartellaq di destinazione
+    shell.openPath(dest);
+  } catch (error) {}
+}
+
 // Controllo per Mac, se tutte le finestre sono chiuse l'applicazione verrà spenta solo se non si è su Mac (win o linux)
 app.on("window-all-closed", () => {
   if (!isMac) {
