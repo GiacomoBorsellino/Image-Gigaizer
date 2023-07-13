@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/GiacomoBorsellino/resizer">
-    <img src="/blob/main/src/renderer/images/logo.png" alt="Logo" width="200">
+    <img src="https://github.com/GiacomoBorsellino/resizer/blob/main/src/renderer/images/logo.png" alt="Logo" width="200">
   </a>
 
   <h3 align="center">Resizer Image</h3>
