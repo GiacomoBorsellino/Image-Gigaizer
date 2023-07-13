@@ -23,6 +23,7 @@ function createMainWindow() {
       nodeIntegration: true,
       preload: path.join(__dirname, "./renderer/js/preload.js"),
     },
+    icon: path.join(__dirname, "./renderer/images/logo.png"),
   });
 
   mainWindow.loadFile(path.join(__dirname, "./renderer/index.html"));
@@ -39,6 +40,7 @@ function createAboutWindow() {
     title: "About Image Resizer",
     width: isDevMod ? 800 : 500,
     height: 600,
+    icon: path.join(__dirname, "./renderer/images/logo.png"),
   });
 
   aboutWindow.loadFile(path.join(__dirname, "./renderer/about.html"));

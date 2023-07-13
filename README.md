@@ -1,14 +1,13 @@
-
 <br />
 <p align="center">
   <a href="https://github.com/GiacomoBorsellino/resizer">
     <img src="https://github.com/GiacomoBorsellino/resizer/blob/main/src/renderer/images/logo.png" alt="Logo" width="200">
   </a>
 
-  <h3 align="center">Resizer Image</h3>
+  <h3 align="center">Image Gigaizer</h3>
 
   <p align="center">
-   Resizer Image è una desktop app creata con il framework JS Electron. L'applicazione permette di caricare e ridimensionare un immagine alle dimensioni volute.
+   Image Gigaizer è una desktop app creata con il framework JS Electron. L'applicazione permette di caricare e ridimensionare un immagine alle dimensioni volute.
   </p>
     <p align="center">
     <img src="https://github.com/GiacomoBorsellino/resizer/blob/main/src/assets/screen.png" alt="screenshot" width="80%">
@@ -28,31 +27,30 @@
 
 ## Tecnologie/Argomenti
 
-* HTML5
-* CSS
-* Javascript
-* ElectronJS
-* NPM
+- HTML5
+- CSS
+- Javascript
+- ElectronJS
+- NPM
 
 ## API e utilizzo
-Resizer Image è una desktop app creata con il framework JS Electron. L'applicazione permette di caricare e ridimensionare un immagine alle dimensioni volute.
 
-É possibile provare l'app in modalità produzione a questo link: https://whatwatch-app.netlify.app/
+Image Gigaizer è una desktop app creata con il framework JS Electron. L'applicazione permette di caricare e ridimensionare un immagine alle dimensioni volute.
+
+É possibile provare l'app in modalità produzione scaricando alla sezione <a href="#installazione">Installazione</a>il file eseguibile qui
 o provarla in modalità dev, seguendo la sezione <a href="#installazione">Installazione</a>
-
-N.b. La key è nascosta opportunamente tramite l'uso delle environment variables, sfruttate utilizzando webpack e il sistema di Netlify.
 
 ## Prerequisiti
 
-* Installare l'ambiente Node.js per poter amministrare npm
-* Git CLI
+- Installare l'ambiente Node.js per poter amministrare npm
+- Git CLI
 
 ## Installazione in modalità Development
 
 1. Clona il repository
 
    ```sh
-   git clone https://github.com/GiacomoBorsellino/WhatWatch
+   git clone https://github.com/GiacomoBorsellino/resizer
    ```
 
 2. Entra nella cartella
@@ -65,15 +63,15 @@ N.b. La key è nascosta opportunamente tramite l'uso delle environment variables
 
    ```sh
    npm install npm@latest -g
-   npm install 
+   npm install
    ```
 
-5. Avvia l'Applicazione
+4. Avvia l'Applicazione
 
    ```sh
    npx electronmon ./src/main.js
    ```
-   
+
 ## Installazione in modalità Production
 
 1. Avviare l'eseguibile dell'applicazione al percorso
@@ -94,7 +92,6 @@ Profilo Linkedin, per collaborazioni o proposte di lavoro: [Linkedin](https://ww
 
 ## Crediti
 
-* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 npx electronmon ./src/main.js

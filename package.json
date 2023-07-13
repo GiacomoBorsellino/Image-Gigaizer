@@ -1,11 +1,13 @@
 {
   "name": "resizer",
-  "productName": "Image Resizer",
+  "productName": "Image Gigaizer",
   "version": "1.0.0",
   "description": "little app make to resize images",
-  "main": "main.js",
+  "main": "./src/main.js",
   "scripts": {
-    "start": "electron ./src/main.js"
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "repository": {
     "type": "git",
@@ -24,8 +26,17 @@
   },
   "homepage": "https://github.com/GiacomoBorsellino/resizer#readme",
   "dependencies": {
-    "electron": "^14.2.9",
-    "resize-img": "^1.1.2",
+    "electron-squirrel-startup": "^1.0.0",
+    "resize-img": "^2.0.0",
     "toastify-js": "^1.12.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.2.1",
+    "@electron-forge/maker-deb": "^6.2.1",
+    "@electron-forge/maker-rpm": "^6.2.1",
+    "@electron-forge/maker-squirrel": "^6.2.1",
+    "@electron-forge/maker-zip": "^6.2.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
+    "electron": "^25.3.0"
   }
 }
