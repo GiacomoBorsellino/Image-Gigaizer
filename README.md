@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/GiacomoBorsellino/resizer">
-    <img src="/resizer/blob/main/src/renderer/images/logo.png" alt="Logo" width="200">
+    <img src="/blob/main/src/renderer/images/logo.png" alt="Logo" width="200">
   </a>
 
   <h3 align="center">Resizer Image</h3>
@@ -11,7 +11,7 @@
    Resizer Image è una desktop app creata con il framework JS Electron. L'applicazione permette di caricare e ridimensionare un immagine alle dimensioni volute.
   </p>
     <p align="center">
-    <img src="/resizer/blob/main/src/assets/screen.png" alt="screenshot" width="80%">
+    <img src="/blob/main/src/assets/screen.png" alt="screenshot" width="80%">
   </p>
 </p>
 
