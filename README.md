@@ -37,7 +37,7 @@
 
 Image Gigaizer è una desktop app creata con il framework JS Electron. L'applicazione permette di caricare e ridimensionare un immagine alle dimensioni volute.
 
-É possibile provare l'app in modalità produzione scaricando alla sezione <a href="#installazione">Installazione</a>il file eseguibile qui
+É possibile provare l'app in modalità produzione scaricando alla sezione <a href="#installazione">Installazione</a> il file eseguibile qui
 o provarla in modalità dev, seguendo la sezione <a href="#installazione">Installazione</a>
 
 ## Prerequisiti
@@ -93,5 +93,3 @@ Profilo Linkedin, per collaborazioni o proposte di lavoro: [Linkedin](https://ww
 ## Crediti
 
 - [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-
-npx electronmon ./src/main.js
