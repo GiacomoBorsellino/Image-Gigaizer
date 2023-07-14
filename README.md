@@ -74,10 +74,10 @@ o provarla in modalità dev, seguendo la sezione <a href="#installazione">Instal
 
 ## Installazione in modalità Production
 
-1. Avviare l'eseguibile dell'applicazione al percorso
+1. Scaricare l'eseguibile dal questo [Link](https://www.mediafire.com/file/lywpu4nznkr1p48/ImageGigaizerSetup.exe/file)
 
    ```sh
-   cd resizer/...
+   Clicca sul file eseguibile e attendi l\'installazione
    ```
 
 ## Licenza
