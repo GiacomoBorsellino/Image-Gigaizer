@@ -77,7 +77,7 @@ o provarla in modalità dev, seguendo la sezione <a href="#installazione">Instal
 1. Scaricare l'eseguibile dal questo [Link](https://www.mediafire.com/file/lywpu4nznkr1p48/ImageGigaizerSetup.exe/file)
 
    ```sh
-   Clicca sul file eseguibile e attendi l\'installazione
+   Clicca sul file eseguibile e attendi l'installazione
    ```
 
 ## Licenza
